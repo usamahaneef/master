@@ -1,0 +1,141 @@
+:root {
+    /* --primary-color: #3753b1;
+    --secondary-color: #516aba; */
+
+    --primary-color: #009bd9;
+    --secondary-color: #009bd9;
+}
+
+.bootstrap-switch-handle-on .bootstrap-switch-primary {
+    background: var(--primary-color) !important;
+}
+
+.select2-selection__choice {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.select2-selection__choice__remove {
+    color: white !important;
+}
+
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-primary{
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover{
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.info-box-number {
+    font-size: 20px;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active,
+.btn-outline-primary.active,
+.open>.dropdown-toggle.btn-outline-primary {
+    color: #fff;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    /*set the color you want here*/
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+/*
+*/
+.user-panel .info {
+    color: whitesmoke !important;
+}
+.nav .nav-header {
+    color: whitesmoke !important;
+}
+
+.badge-primary {
+    color: white;
+    background-color: var(--primary-color);
+}
+
+.badge-primary:hover {
+    color: white;
+    background-color: var(--secondary-color) !important;
+}
+
+.list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+
+.main-sidebar {
+    background-color: var(--primary-color) !important;
+}
+
+.control-sidebar {
+    background-color: var(--primary-color) !important;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.page-link {
+    color: var(--primary-color);
+}
+
+.card-header {
+    border-bottom: none;
+}
+
+.sidebar .nav-sidebar .nav-item .active{
+    background-color: #32acf7 !important;
+}
+
+.bootstrap-switch-label{
+    padding: .5rem !important;
+}
+.nav-sidebar .nav-item > a {
+    color: whitesmoke !important;
+}
+.nav-header {
+    color: #000 !important;
+}
+.nav-link.active{
+    background-color: #ffffff99 !important;
+}

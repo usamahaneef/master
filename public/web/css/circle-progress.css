@@ -1,0 +1,110 @@
+.custom-progress {
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    background: none;
+    margin: 0 auto;
+    position: relative;
+}
+
+.custom-progress:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 12px solid #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.progress-left-custom, .progress-right-custom {
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+
+.progress-left-custom {
+    left: 0;
+}
+
+.progress-bar-custom {
+    width: 100%;
+    height: 100%;
+    background: none;
+    border-width: 12px;
+    border-style: solid;
+    position: absolute;
+    top: 0;
+}
+
+.progress-left-custom .progress-bar-custom {
+    left: 100%;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px;
+    border-left: 0;
+    transform-origin: center left;
+}
+
+.progress-right-custom {
+    right: 0;
+}
+
+.progress-right-custom .progress-bar-custom {
+    left: -100%;
+    border-top-left-radius: 80px;
+    border-bottom-left-radius: 80px;
+    border-right: 0;
+    transform-origin: center right;
+    animation: loading-right-custom 1.8s linear forwards;
+}
+
+.progress-value-custom {
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    background: #44484b;
+    font-size: 24px;
+    color: #fff;
+    line-height: 135px;
+    text-align: center;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+}
+
+.custom-progress.blue .progress-bar-custom {
+    border-color: #049dff;
+}
+
+.custom-progress.blue .progress-left-custom .progress-bar-custom {
+    animation: loading-left-custom 1.5s linear forwards 1.8s;
+}
+
+/* Keyframes for animations */
+@keyframes loading-right-custom {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes loading-left-custom {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+
+/* Responsive adjustments */
+@media only screen and (max-width: 990px) {
+    .custom-progress { margin-bottom: 20px; }
+}
