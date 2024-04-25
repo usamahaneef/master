@@ -1,18 +1,17 @@
 @extends('auth.admin.layout')
 @section('content')
     <div class="row" style="height: 100vh">
-        {{-- <div class="col align-items-center justify-content-center d-none d-sm-flex" style="">
+        <div class="col align-items-center justify-content-center d-none d-sm-flex" style="background-color: #d0ae3d">
             <img src="{{asset('admin/img/login-image.png')}}" alt="" style="" class="img-fluid">
-        </div> --}}
+        </div>
         <div class="col d-flex align-items-center justify-content-center bg-gray-light">
             <div class="login-box">
                 <div class="card elevation-0">
                     <div class="card-header align-items-center" align="center">
-                        <div class="">
-                            <h2>Admin login</h2>
-                            {{-- <img src="{{ asset('admin/img/logo.png') }}" class="w-50" alt=""> --}}
+                        <div class="d-block d-sm-none">
+                            <img src="{{ asset('admin/img/login-logo.png') }}" class="w-50" alt="">
                         </div>
-                        <h5 class="fw-bold">Log In to start your session as admin</h5>
+                        <h5 class="fw-bold">Log In to start your session </h5>
                     </div>
                     <div class="card-body login-card-body">
                         <form action="{{route('admin.login')}}" method="POST">
@@ -56,11 +55,11 @@
                                 </div>
                             </div>
                         </form>
-                        {{-- <div class="row mt-3">
+                        <div class="row mt-3">
                             <div class="col-8">
                                 <a href="" class="btn btn-sm btn-default">Forgot My Password</a>
                             </div>
-                        </div> --}}
+                        </div>
 
                     </div>
                 </div>

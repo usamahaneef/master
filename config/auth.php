@@ -40,6 +40,15 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+        'society' => [
+            'driver' => 'session',
+            'provider' => 'societies',
+        ],
+        'user_api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -60,10 +69,17 @@ return [
     */
 
     'providers' => [
-        
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+        'societies' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\SocietyUser::class,
+        ],
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
         ],
     ],
 
@@ -89,6 +105,12 @@ return [
     'passwords' => [
         'admins' => [
             'provider' => 'admins',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'societies' => [
+            'provider' => 'societies',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

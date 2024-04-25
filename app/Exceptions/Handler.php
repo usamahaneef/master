@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -27,4 +28,25 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    /**
+     * Override Api unauthenticated response
+     */
+
+    /**
+     * Override Api unauthenticated response
+     */
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        if ($request->expectsJson()) {
+            return response()->json([
+                'status' => 104, 
+                'message' => 'Invalid Api token', 
+                'validation_errors' => [], 
+                'data' => []
+            ]);
+        }
+        return redirect()->guest($exception->redirectTo() ?? route('admin.login'));
+    }
+
 }

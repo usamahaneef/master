@@ -2,8 +2,8 @@
     /* --primary-color: #3753b1;
     --secondary-color: #516aba; */
 
-    --primary-color: #009bd9;
-    --secondary-color: #009bd9;
+    --primary-color: #edca56;
+    --secondary-color: #d0ae3d;
 }
 
 .bootstrap-switch-handle-on .bootstrap-switch-primary {
@@ -20,14 +20,16 @@
 }
 
 
-.btn-primary:hover {
+.btn-primary :hover {
+
     background-color: var(--secondary-color);
     border-color: var(--secondary-color);
-}
 
+}
 .btn-primary{
     background-color: var(--secondary-color) !important;
     border-color: var(--secondary-color) !important;
+
 }
 
 .btn-outline-primary {
@@ -75,12 +77,6 @@
 
 /*
 */
-.user-panel .info {
-    color: whitesmoke !important;
-}
-.nav .nav-header {
-    color: whitesmoke !important;
-}
 
 .badge-primary {
     color: white;
@@ -124,18 +120,18 @@
 }
 
 .sidebar .nav-sidebar .nav-item .active{
-    background-color: #32acf7 !important;
+    background-color: #ffffff2b !important;
 }
 
 .bootstrap-switch-label{
     padding: .5rem !important;
 }
-.nav-sidebar .nav-item > a {
-    color: whitesmoke !important;
+.nav-item > a {
+    color: #000 !important;
 }
 .nav-header {
     color: #000 !important;
 }
 .nav-link.active{
-    background-color: #ffffff99 !important;
+    background-color: #ffffff2b;
 }

@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin | {{$title ?? ''}}</title>
-
+    <title>UniSocial Solutions Admin | {{$title}}</title>
+    
     <link rel="icon" type="image/png" href="{{asset('admin/img/favicon.png')}}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="{{asset('admin/plugins')}}/fontawesome-free/css/all.min.css">
@@ -27,8 +27,8 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                    <img
-                    src="{{ asset('admin/img/admin-logo.png') }}"
+                    <img 
+                    src="{{ auth('admin')->user()->avatar_url}}"
                     style="width: 32px;height: 32px;border: 1px solid grey" class="img-circle" alt="User Image">
                 </a>
             </li>
@@ -39,38 +39,72 @@
         <a href="{{route('admin.dashboard')}}" class="brand-link elevation-4  text-center"
            style="background-color: #f0f1ef">
             <span class="">
-                <img style="max-height: 38px" src="{{ asset('admin/img/admin-logo.png') }}" alt="Logo" class="img-fluid" style="opacity: .8">
+                <img style="max-height: 38px" src="{{ asset('admin/img/admin-banner-image.png') }}" alt="AURA Logo" class="img-fluid" style="opacity: .8">
             </span>
             {{-- <span class="font-weight-light" style="color: black"></span> --}}
-
+                
             </span>
         </a>
         <div class="sidebar">
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{ asset('admin/img/avatar.png') }}" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{ auth('admin')->user()->avatar_url}}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">{{ auth('admin')->user()->name }}</a>
+                    <a href="#" class="d-block" style="color: black">{{ auth('admin')->user()->name }}</a>
                 </div>
             </div>
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
+                    @if(auth('admin')->user()->can('dashboard.view') || auth('admin')->user()->hasRole('society user'))
                     <li class="nav-header">ANALYTICS</li>
                     <li class="nav-item">
-                        <a href="{{route('admin.dashboard')}}" class=" nav-link {{ $nav_menu == 'dashboard' ? 'active' : ''}} text-white">
+                        <a href="{{route('admin.dashboard')}}" class=" nav-link {{$menu_active == 'dashboard' ? 'active' : ''}} text-white">
                             <i class="nav-icon fas fa-th-large"></i>
                             <p>
                                 Dashboard
                             </p>
                         </a>
                     </li>
+                    @endif
+                    <li class="nav-header">GENERAL</li>
+                    @if(checkAdminPermissions('SuperAdmin', 'roles.view') )
                     <li class="nav-item">
-                        <a href="{{route('admin.hospitals')}}" class=" nav-link {{ $nav_menu == 'reception' ? 'active' : ''}} text-white">
-                            <i class="nav-icon fas fa-building"></i>
+                        <a href="{{route('admin.roles')}}" class=" nav-link {{$menu_active == 'roles' ? 'active' : ''}} text-white">
+                            <i class="nav-icon fas fa-user-tag"></i>
                             <p>
-                                Hospital
+                                Roles
+                            </p>
+                        </a>
+                    </li>
+                    @endif
+                    @if(checkAdminPermissions('SuperAdmin', 'users.view') )
+                    <li class="nav-item">
+                        <a href="{{route('admin.user.index')}}" class=" nav-link {{$menu_active == 'admin_users' ? 'active' : ''}} text-white">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>
+                                Users
+                            </p>
+                        </a>
+                    </li>
+                    @endif
+                    <li class="nav-header">Manage Panel</li>
+
+                    <li class="nav-header">CONFIGURATION</li>
+                    <li class="nav-item">
+                        <a href="{{route('admin.setting')}}" class="nav-link {{$menu_active == 'setting' ? 'active' : ''}} text-white">
+                            <i class="nav-icon fas fa-cogs"></i>
+                            <p>
+                                Settings
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('admin.update-password')}}" class="nav-link {{$menu_active == 'password' ? 'active' : ''}} text-white">
+                            <i class="nav-icon fas fa-lock"></i>
+                            <p>
+                                Update Password
                             </p>
                         </a>
                     </li>
@@ -81,9 +115,10 @@
     @yield('content')
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
-            <b>Version</b> 1.0.0
+            <b>Version</b> 1.0.
         </div>
-        <strong>Copyright &copy; {{@date('Y')}}</strong> All rights reserved.
+        <strong>Copyright &copy; {{@date('Y')}} <a href="#">UniSocial Solutions LLP
+            </a>.</strong> All rights reserved.
     </footer>
 
     <aside class="control-sidebar control-sidebar-dark">
@@ -91,7 +126,7 @@
             <div class="card-body">
                 <div class="align-items-center d-flex p-0 user-panel">
                     <div class="image mt-n3">
-                        <img src="{{ asset('admin/img/avatar.png') }}" class="img-circle elevation-2"
+                        <img src="{{ auth('admin')->user()->avatar_url}}" class="img-circle elevation-2"
                              alt="User Image">
                     </div>
                     <div class="info">
@@ -110,6 +145,19 @@
 
             </div>
         </div>
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+            data-accordion="false">
+
+            <li class="nav-item">
+                <a href="{{route('admin.update-password')}}" class="nav-link text-white">
+                    <i class="nav-icon fas fa-lock"></i>
+                    <p>
+                        Update Password
+                    </p>
+                </a>
+            </li>
+
+        </ul>
     </aside>
 </div>
 <script src="{{asset('admin/plugins')}}/jquery/jquery.min.js"></script>
@@ -127,17 +175,13 @@
 @stack('script')
 <script>
     $(function () {
-        $('.select2').select2()
-
-        $('.editor').summernote({
-            height: 400,
-        });
         $('.bt-switch').bootstrapSwitch();
-        $('#image_input_field').change(function() {
-                preview_img(this, $('#image_preview'));
+        $('.select2').select2();
+        $('#image_input_field').change(function () {
+            preview_img(this, $('#image_preview'));
         });
-        $('#image_input_field_author').change(function() {
-            preview_img(this, $('#image_preview_author'));
+        $('#image_input_field_2').change(function () {
+            preview_img(this, $('#image_preview_2'));
         });
         toastr.options = {
             "debug": false,
@@ -156,16 +200,6 @@
         @endif
     })
 
-    $(document).ready(function() {
-        $('#upload-button').click(function() {
-            $('#image_input_field').click();
-        });
-    });
-    $(document).ready(function() {
-        $('#upload-button-author').click(function() {
-            $('#image_input_field_author').click();
-        });
-    });
     function preview_img(input, img) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
