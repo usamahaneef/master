@@ -54,7 +54,8 @@
                     <a href="#" class="d-block" style="color: black">{{ auth('admin')->user()->name }}</a>
                 </div>
             </div>
-            <nav class="mt-2">
+            <nav class="mt-2"> hello
+                
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
                     @if(auth('admin')->user()->can('dashboard.view') || auth('admin')->user()->hasRole('society user'))
