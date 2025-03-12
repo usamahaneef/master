@@ -54,12 +54,11 @@
                     <a href="#" class="d-block" style="color: black">{{ auth('admin')->user()->name }}</a>
                 </div>
             </div>
-            <nav class="mt-2"> hello
+            <nav class="mt-2">
                 
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
                     @if(auth('admin')->user()->can('dashboard.view') || auth('admin')->user()->hasRole('society user'))
-                    <li class="nav-header">ANALYTICS</li>
                     <li class="nav-item">
                         <a href="{{route('admin.dashboard')}}" class=" nav-link {{$menu_active == 'dashboard' ? 'active' : ''}} text-white">
                             <i class="nav-icon fas fa-th-large"></i>
@@ -69,45 +68,65 @@
                         </a>
                     </li>
                     @endif
-                    <li class="nav-header">GENERAL</li>
-                    @if(checkAdminPermissions('SuperAdmin', 'roles.view') )
-                    <li class="nav-item">
-                        <a href="{{route('admin.roles')}}" class=" nav-link {{$menu_active == 'roles' ? 'active' : ''}} text-white">
-                            <i class="nav-icon fas fa-user-tag"></i>
-                            <p>
-                                Roles
-                            </p>
-                        </a>
-                    </li>
-                    @endif
-                    @if(checkAdminPermissions('SuperAdmin', 'users.view') )
-                    <li class="nav-item">
-                        <a href="{{route('admin.user.index')}}" class=" nav-link {{$menu_active == 'admin_users' ? 'active' : ''}} text-white">
-                            <i class="nav-icon fas fa-users"></i>
-                            <p>
-                                Users
-                            </p>
-                        </a>
-                    </li>
-                    @endif
-                    <li class="nav-header">Manage Panel</li>
 
-                    <li class="nav-header">CONFIGURATION</li>
-                    <li class="nav-item">
-                        <a href="{{route('admin.setting')}}" class="nav-link {{$menu_active == 'setting' ? 'active' : ''}} text-white">
-                            <i class="nav-icon fas fa-cogs"></i>
-                            <p>
-                                Settings
-                            </p>
+                    <li class="nav-item has-treeview {{ ($menu_active == 'admin_users' || $menu_active == 'roles') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ ($menu_active == 'admin_users' || $menu_active == 'roles') ? 'active' : '' }} parent-menu">
+                          <i class="nav-icon fas fas fa-user-tag"></i>
+                          <p>
+                            GENERAL
+                            <i class="right fas fa-angle-left"></i>
+                          </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            @if(checkAdminPermissions('SuperAdmin', 'roles.view') )
+                            <li class="nav-item">
+                                <a href="{{route('admin.roles')}}" class=" nav-link {{$menu_active == 'roles' ? 'active' : ''}} text-white">
+                                    <i class="nav-icon fas fa-arrow-right"></i>
+                                    <p>
+                                        Roles
+                                    </p>
+                                </a>
+                            </li>
+                            @endif
+                            @if(checkAdminPermissions('SuperAdmin', 'users.view') )
+                            <li class="nav-item">
+                                <a href="{{route('admin.user.index')}}" class=" nav-link {{$menu_active == 'admin_users' ? 'active' : ''}} text-white">
+                                    <i class="nav-icon fas fa-users"></i>
+                                    <p>
+                                        Users
+                                    </p>
+                                </a>
+                            </li>
+                            @endif
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{route('admin.update-password')}}" class="nav-link {{$menu_active == 'password' ? 'active' : ''}} text-white">
-                            <i class="nav-icon fas fa-lock"></i>
-                            <p>
-                                Update Password
-                            </p>
+
+                    <li class="nav-item has-treeview {{ ($menu_active == 'password' || $menu_active == 'setting') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ ($menu_active == 'password' || $menu_active == 'setting') ? 'active' : '' }} parent-menu">
+                          <i class="nav-icon fas fas fa-cogs"></i>
+                          <p>
+                            CONFIGURATION
+                            <i class="right fas fa-angle-left"></i>
+                          </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('admin.setting')}}" class="nav-link {{$menu_active == 'setting' ? 'active' : ''}} text-white">
+                                    <i class="nav-icon fas fa-arrow-right"></i>
+                                    <p>
+                                        Setting
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('admin.update-password')}}" class="nav-link {{$menu_active == 'password' ? 'active' : ''}} text-white">
+                                    <i class="nav-icon fas fa-arrow-right"></i>
+                                    <p>
+                                        Update Password
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </nav>
@@ -118,7 +137,7 @@
         <div class="float-right d-none d-sm-block">
             <b>Version</b> 1.0.
         </div>
-        <strong>Copyright &copy; {{@date('Y')}} <a href="#">UniSocial Solutions LLP
+        <strong>Copyright &copy; {{@date('Y')}} <a href="#">
             </a>.</strong> All rights reserved.
     </footer>
 

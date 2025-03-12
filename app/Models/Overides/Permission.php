@@ -55,42 +55,6 @@ class Permission extends Model
                 "universities.edit",
                 "universities.delete",
             ],
-            "societies" =>  [
-                "societies.bulk-view",
-                "societies.view",
-                "societies.detail",
-                "societies.create",
-                "societies.edit",
-                "societies.delete",
-            ],
-            "students" =>  [
-                "students.bulk-view",
-                "students.view",
-                "students.detail",
-                "students.delete",
-            ],
-            "venues" => [
-                "venues.bulk-view",
-                "venues.view",
-                "venues.detail",
-                "venues.create",
-                "venues.edit",
-                "venues.delete",
-            ],
-            "events" => [
-                "events.bulk-view",
-                "events.view",
-                "events.detail",
-                "events.create",
-                "events.edit",
-                "events.delete",
-            ],
-            "partners" =>  [
-                "partners.bulk-view",
-                "partners.view",
-                "partners.detail",
-                "partners.delete",
-            ],
 
         ];
     }
